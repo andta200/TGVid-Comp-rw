@@ -2,14 +2,14 @@
 #    Copyright (c) 2021 Danish_00
 #    Script Improved by Zylern
 
+
 from . import *
 from .config import *
 from .worker import *
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
-import psutil, os, signal, sys, platform, sysconfig
+import psutil, os, signal
 from bot import ffmpegcode, LOG_FILE_NAME
-from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 
 WORKING = []
 QUEUE = {}
@@ -98,11 +98,12 @@ async def progress(current, total, event, start, type_of_ps, file=None):
             await event.edit("{}\n\n{}".format(type_of_ps, tmp))
 
 
-async def test(event):
+
+async def sysinfo(event):
     try:
-        zylern = "speedtest --simple"
+        zyl = "neofetch --stdout"
         fetch = await asyncrunapp(
-            zylern,
+            zyl,
             stdout=asyncPIPE,
             stderr=asyncPIPE,
         )
@@ -111,22 +112,7 @@ async def test(event):
             + str(stderr.decode().strip())
         await event.reply("**" + result + "**")
     except FileNotFoundError:
-        await event.reply("**Install speedtest-cli**")
-
-
-async def sysinfo(e):
-    if str(e.sender_id) not in OWNER and event.sender_id !=DEV:
-        return
-    total, used, free, disk= disk_usage('/')
-    total = hbs(total)
-    free = hbs(free)
-    memory = virtual_memory()
-    mem_p = memory.percent
-    mem_t = hbs(memory.total)
-    mem_a = hbs(memory.available)
-    mem_u = hbs(memory.used)
-    await e.reply(f"**OS:** {platform.system()}\n**Version:** {platform.release()}\n**Arch:** {platform.architecture()}\n**Total Disk Space:** {total}\n**Free:** {free}\n**Memory Total:** {mem_t}\n**Memory Free:** {mem_a}\n**Memory Used:** {mem_u}\n")
-    return
+        await event.reply("**Install neofetch first**")
 
 
 async def info(file, event):
