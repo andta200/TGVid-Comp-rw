@@ -48,10 +48,30 @@ async def zylern(event):
 
 async def help(event):
     await event.edit(
-        f"""**To check current ffmpeg code you can use** /getcode\n\n**You can change your ffmpeg code by executing following command.**\n\n`/setcode -preset faster -c:v libx265 -s 1280x720 -x265-params 'bframes=8:psy-rd=1:ref=3:aq-mode=3:aq-strength=0.8:deblock=1,1' -pix_fmt yuv420p -crf 30 -c:a libopus -b:a 32k -c:s copy -map 0 -ac 2 -ab 32k -vbr 2 -level 3.1 -threads 1`\n\n**To set custom thumbnail send me the image.**\n\n**Do /cmds For More**"""
+        f"""**To check current ffmpeg code you can use** /getcode\n\n**You can change your ffmpeg code by executing following command.**\n
+✅ **HEVC (resolution=unchangeable)**
+`/setcode -c:v libx265 -crf 28 -preset superfast -c:a libopus -vbr on -b:a 64k -threads 1`
+✅ **HEVC (resolution=changeable)**
+`/setcode -c:v libx265 -crf 28 -preset superfast -s 1280x720 -c:a libopus -vbr on -b:a 64k -threads 1`
+✅ **HEVC (LOGO)**
+`/setcode -c:v libx265 -crf 28 -preset superfast -vf "drawtext=fontfile=font.ttf:fontsize=30:fontcolor=white:bordercolor=black@0.50:x=w/2-tw/2:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=Konuşanlar TV" -c:a libopus -vbr on -b:a 64k -threads 1`
+✅ **480P**
+`/setcode -c:v libx265 -crf 28 -preset superfast -vf scale=854:-2 -c:a libopus -vbr on -b:a 64k -threads 1`
+
+**To set custom thumbnail send me the image.**\n\n**Do /cmds For More**"""
     )
     
 async def ihelp(e):
     await e.reply(
-        f"""**To check current ffmpeg code you can use** /getcode\n\n**You can change your ffmpeg code by executing following command.**\n\n`/setcode -preset faster -c:v libx265 -s 1280x720 -x265-params 'bframes=8:psy-rd=1:ref=3:aq-mode=3:aq-strength=0.8:deblock=1,1' -pix_fmt yuv420p -crf 30 -c:a libopus -b:a 32k -c:s copy -map 0 -ac 2 -ab 32k -vbr 2 -level 3.1 -threads 1`\n\n**To set custom thumbnail send me the image.**\n\n**Do /cmds For More**"""
+        f"""**To check current ffmpeg code you can use** /getcode\n\n**You can change your ffmpeg code by executing following command.**\n
+✅ **HEVC (resolution=unchangeable)**
+`/setcode -c:v libx265 -crf 28 -preset superfast -c:a libopus -vbr on -b:a 64k -threads 1`
+✅ **HEVC (resolution=changeable)**
+`/setcode -c:v libx265 -crf 28 -preset superfast -s 1280x720 -c:a libopus -vbr on -b:a 64k -threads 1`
+✅ **HEVC (LOGO)**
+`/setcode -c:v libx265 -crf 28 -preset superfast -vf "drawtext=fontfile=font.ttf:fontsize=30:fontcolor=white:bordercolor=black@0.50:x=w/2-tw/2:y=10:box=1:boxcolor=black@0.5:boxborderw=6:text=Konuşanlar TV" -c:a libopus -vbr on -b:a 64k -threads 1`
+✅ **480P**
+`/setcode -c:v libx265 -crf 28 -preset superfast -vf scale=854:-2 -c:a libopus -vbr on -b:a 64k -threads 1`
+
+**To set custom thumbnail send me the image.**\n\n**Do /cmds For More**"""
     )

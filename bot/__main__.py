@@ -238,9 +238,9 @@ async def something():
                 xxx = ts(int((eees - ees).seconds) * 1000)
                 a1 = await info(dl, e)
                 a2 = await info(out, e)
-                dk = f"<b>File Name:</b> {newFile}\n\n<b>Original File Size:</b> {hbs(org)}\n<b>Encoded File Size:</b> {hbs(com)}\n<b>Encoded Percentage:</b> {per}\n\n<b>Get Mediainfo Here:</b> <a href='{a1}'>Before</a>/<a href='{a2}'>After</a>\n\n<i>Downloaded in {x}\nEncoded in {xx}\nUploaded in {xxx}</i>"
+                dk = f"<b>Name:</b> {newFile}\n<b>Size:</b> {hbs(com)} ({hbs(org)} • {per})\n<b>Time:</b> 🔻{x} 〽️{xx} 🔺{xxx}"
                 ds = await e.client.send_file(
-                    e.chat_id, file=ok, force_document=True, caption=dk, link_preview=False, thumb=thum, parse_mode="html"
+                    e.chat_id, file=ok, force_document=False, caption=dk, link_preview=True, thumb=thum, parse_mode="html"
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
                 os.remove(dl)
